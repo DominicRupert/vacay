@@ -19,4 +19,16 @@ namespace vacay.Models
         
     }
 
+    public class VacationCruiseViewModel : Vacation
+    {
+        public int CruiseId { get; set; }
+    }
+
+    public class VacationTourViewModel : Vacation
+    {
+        public int TourId { get; set; }
+    }
+
+    
+
 }

@@ -9,7 +9,7 @@ namespace vacay.Models
         public string Name { get; set; }
         
     }
-    public class Account
+    public class Account : Profile
     {
         public string Email { get; set; }
     }

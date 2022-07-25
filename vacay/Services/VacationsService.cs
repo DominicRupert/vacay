@@ -23,7 +23,7 @@ namespace vacay.Services
 
         internal Vacation GetById(int id)
         {
-            Vacation found
+            Vacation found = _repo.GetById(id);
             return _repo.GetById(id);
         }
 
@@ -41,6 +41,11 @@ namespace vacay.Services
             }
              _repo.Delete(id);
             return original;
+        }
+
+        internal List<VacationCruiseViewModel> GetCruiseByAccountId(string userId)
+        {
+            return _repo.GetCruiseByAccountId(userId);
         }
        
         

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using vacay.Models;
-using vacay.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using vacay.Services;
+using CodeWorks.Auth0Provider;
 
 namespace vacay.Controllers
 {
@@ -33,5 +33,22 @@ namespace vacay.Controllers
             return _vs.GetById(id);
         }
         
+        [HttpPost]
+        [Authorize]
+        public async  Task<ActionResult<Vacation>> Create([FromBody] Vacation newVacation)
+        {
+            try{
+            Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+            newVacation.CreatorId = userInfo.Id;
+            Vacation vacayData = _vs.Create(newVacation);
+            vacayData.Creator = userInfo;
+            vacayData.CreatedAt = new DateTime();
+            return Ok(newVacation);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
