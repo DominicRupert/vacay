@@ -42,6 +42,10 @@ namespace vacay
             
             services.AddScoped<AccountsRepository>();
             services.AddScoped<AccountService>();
+            services.AddTransient<VacationsRepository>();
+            services.AddTransient<VacationsService>();
+            services.AddTransient<CruisesRepository>();
+            services.AddTransient<CruisesService>();
         }
 
         private void ConfigureCors(IServiceCollection services)

@@ -23,7 +23,7 @@ namespace vacay.Repositories
         {
             string sql = @"
             SELECT
-            a.*
+            a.*,
             v.*
             FROM vacations v
             JOIN accounts a ON a.id = v.creatorId";
@@ -38,7 +38,7 @@ namespace vacay.Repositories
         {
             string sql = @"
             SELECT
-            a.*
+            a.*,
             v.*
             FROM vacations v
             JOIN accounts a ON a.id = v.creatorId
